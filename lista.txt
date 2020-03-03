@@ -1,0 +1,1 @@
+Person{city='kolo', firstName='tom', lastName='paw', pesel=88092802614}
