@@ -1,8 +1,5 @@
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Person {
 //    Stworzenie programu, który będzie tworzyć listy mieszkańców i zapisywać je do pliku.
@@ -14,6 +11,7 @@ public class Person {
 //    W przypadku złego numeru PESEL podany wpis nie jest zapisywany do pliku a użytkownik otrzymuje komunikat o błędzie.
 
 //    Każde uruchomienie tworzy nowy plik odpowiedzi (program nie odczytuje żadnych danych).
+
 //    W przypadku podania dwa razy tego samego numeru PESEL a innego imienia i nazwiska wpis jest nadpisywany.
 
 //    Napisz co najmniej 2 testy do danych klas - co najmniej dla metody sprawdzającej
@@ -26,6 +24,7 @@ public class Person {
     Scanner scanner = new Scanner(System.in);
 
     List<Person> personList = new ArrayList<Person>();
+    Collection<Person> filterd = new ArrayList<>();
 
     public Person() {
     }
@@ -57,7 +56,16 @@ public class Person {
 
         personList.add(person);
         scanner.nextLine();
+
+
+        filterd = personList.stream()
+                .collect(Collectors.toMap(
+                        Person::getPesel, p -> p, (p1, p2) -> p2))
+                .values();
+
+
     }
+
 
     private void checkPesel(Person person) {
 
@@ -97,6 +105,7 @@ public class Person {
         }
 
     }
+
 
     public void showList() {
         for (Person person : personList
@@ -146,5 +155,21 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", pesel=" + pesel +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(city, person.city) &&
+                Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(pesel, person.pesel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(city, firstName, lastName, pesel);
     }
 }
