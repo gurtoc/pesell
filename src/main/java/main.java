@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -7,10 +8,13 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
-
         Person person = new Person();
-        Scanner scanner = new Scanner(System.in);
-        FileWriter fileWriter = new FileWriter("lista.txt");
+        WriteFile writeFile = new WriteFile();
+
+        //FileWriter fileWriter = new FileWriter("lista.txt");
+
+//        File filePath = File.createTempFile("out_", ".txt", new File("C:/Users/tom/Desktop/"));
+//        FileWriter fileWriter = new FileWriter(filePath, true);
 
 
 
@@ -21,20 +25,19 @@ public class main {
             person.createPerson();
             System.out.println("Jeśli chcesz zakończyć dodawanie kolejnych osób wcisnij i potwierdz '`'. W przeciwnym razie wciśnij 'enter'");
             x = input.nextLine();
-
-
         } while (!x.equalsIgnoreCase("`"));
 
 
 
         for (Person s : person.filterd) {
-
-            fileWriter.write(s + System.lineSeparator());
+            writeFile.saveFile().write(s + System.lineSeparator());
         }
-        fileWriter.close();
-
-
-
+        writeFile.saveFile().close();
+//
+//        for (Person s : person.filterd) {
+//            fileWriter.write(s + System.lineSeparator());
+//        }
+//        fileWriter.close();
 
 
 

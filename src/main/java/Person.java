@@ -52,22 +52,25 @@ public class Person {
         System.out.println("Podaj swoj pesel");
         person.setPesel(scanner.nextLong());
 
-        checkPesel(person);
+        try {
+            if (checkPesel(person)) {
+                personList.add(person);
+            }
+        } catch (Exception e) {
+            System.out.println("Nie poprawny pesel - nie zapisano do pliku wyjsciowego");
+        }
 
-        personList.add(person);
+        //personList.add(person);
         scanner.nextLine();
-
 
         filterd = personList.stream()
                 .collect(Collectors.toMap(
                         Person::getPesel, p -> p, (p1, p2) -> p2))
                 .values();
-
-
     }
 
 
-    private void checkPesel(Person person) {
+     public boolean checkPesel(Person person) {
 
         Long[] array = new Long[11];
         Long number = person.getPesel();
@@ -76,10 +79,9 @@ public class Person {
             for (int i = 10; i >= 0; i--) {
                 array[i] = number % 10;
                 number /= 10;
-                // System.out.println(array[i]);
             }
         } else {
-            System.out.println("error");
+            System.out.println("pesel nie posiada 11 cyfr");
         }
 
         //9×a + 7×b + 3×c + 1×d + 9×e + 7×f + 3×g + 1×h + 9×i + 7×j
@@ -103,7 +105,7 @@ public class Person {
         } else {
             System.out.println("nie poprawny numer pesel");
         }
-
+        return true;
     }
 
 
