@@ -2,20 +2,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Person {
-//    Stworzenie programu, który będzie tworzyć listy mieszkańców i zapisywać je do pliku.
-//    Użytkownik podaje korzystając z konsoli nazwę miasta i w kolejnej linii imię, nazwisko i numer PESEL mieszkańca.
-
-//    Numer PESEL powinien być sprawdzany względem poprawności - co najmniej w zakresie sumy kontrolnej ostatniej cyfry.
-//    https://pl.wikipedia.org/wiki/PESEL
-
-//    W przypadku złego numeru PESEL podany wpis nie jest zapisywany do pliku a użytkownik otrzymuje komunikat o błędzie.
-
-//    Każde uruchomienie tworzy nowy plik odpowiedzi (program nie odczytuje żadnych danych).
-
-//    W przypadku podania dwa razy tego samego numeru PESEL a innego imienia i nazwiska wpis jest nadpisywany.
-
-//    Napisz co najmniej 2 testy do danych klas - co najmniej dla metody sprawdzającej
-//    poprawność numeru PESEL oraz dla jakiejś innej klasy z twojego projektu.
 
     private String city;
     private String firstName;
@@ -70,46 +56,6 @@ public class Person {
                         Person::getPesel, p -> p, (p1, p2) -> p2))
                 .values();
     }
-
-
-//     public boolean checkPesel(Person person) {
-//
-//        Long[] array = new Long[11];
-//        Long number = person.getPesel();
-//        int lenght = (int) (Math.log10(number) + 1);
-//        if (lenght == 11) {
-//            for (int i = 10; i >= 0; i--) {
-//                array[i] = number % 10;
-//                number /= 10;
-//            }
-//        } else {
-//            System.out.println("pesel nie posiada 11 cyfr");
-//        }
-//
-//        //9×a + 7×b + 3×c + 1×d + 9×e + 7×f + 3×g + 1×h + 9×i + 7×j
-//        int a = (int) (array[0] * 9);
-//        int b = (int) (array[1] * 7);
-//        int c = (int) (array[2] * 3);
-//        int d = (int) (array[3] * 1);
-//        int e = (int) (array[4] * 9);
-//        int f = (int) (array[5] * 7);
-//        int g = (int) (array[6] * 3);
-//        int h = (int) (array[7] * 1);
-//        int i = (int) (array[8] * 9);
-//        int j = (int) (array[9] * 7);
-//
-//        int suma = a + b + c + d + e + f + g + h + i + j;
-//
-//        int control = suma % 10;
-//
-//        if (control == array[10]) {
-//            System.out.println("hura");
-//        } else {
-//            System.out.println("nie poprawny numer pesel");
-//        }
-//        return true;
-//    }
-
 
     public void showList() {
         for (Person person : personList

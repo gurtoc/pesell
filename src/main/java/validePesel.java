@@ -31,7 +31,7 @@ public class validePesel {
         int control = suma % 10;
 
         if (control == array[10]) {
-            System.out.println("hura");
+            System.out.println("Zapisano osobę do listy/pliku");
         } else {
             System.out.println("nie poprawny numer pesel");
         }

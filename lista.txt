@@ -1,2 +1,0 @@
-Person{city='zxc', firstName='zxc', lastName='zxc', pesel=88092802615}
-Person{city='asd', firstName='asd', lastName='asd', pesel=88092802614}

@@ -10,13 +10,8 @@ public class main {
 
         Person person = new Person();
 
-
-        //FileWriter fileWriter = new FileWriter("lista.txt");
-
-        File filePath = File.createTempFile("out_", ".txt", new File("."));
+        File filePath = File.createTempFile("lista_", ".txt", new File("."));
         FileWriter fileWriter = new FileWriter(filePath, true);
-
-
 
         Scanner input = new Scanner(System.in);
         String x;
@@ -27,12 +22,6 @@ public class main {
             x = input.nextLine();
         } while (!x.equalsIgnoreCase("`"));
 
-
-
-//        for (Person s : person.filterd) {
-//            writeFile.saveFile().write(s + System.lineSeparator());
-//        }
-//        writeFile.saveFile().close();
 
         for (Person s : person.filterd) {
             fileWriter.write(s + System.lineSeparator());
